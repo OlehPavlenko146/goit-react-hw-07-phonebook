@@ -1,16 +1,16 @@
+import { ContactsForm } from './ContactsForm/ContactsForm';
+import { ContactsList } from './ContactsList/ContactsList';
+
+import { GlobalStyle } from './GlobalStyles';
+import { Container, Title } from './App.styled';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <Title>Phonebook</Title>
+      <ContactsForm />
+      <ContactsList title="Contacts" />
+      <GlobalStyle />
+    </Container>
   );
 };
