@@ -1,26 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
+import { addContact } from '../../redux/operations';
+import { selectContacts } from 'redux/selectors';
 import { Filter } from '../Filter/Filter';
 import { Form, Input, Label, AddBtn } from './ContactsForm.styled';
 
 export const ContactsForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newName = event.target.name.value;
+    const name = event.target.name.value;
     const number = event.target.number.value;
+    dispatch(addContact({ name, number }));
 
     if (
       contacts.some(
-        contact => contact.name.toLowerCase() === newName.toLowerCase()
+        contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      return alert(`${newName} is already in contacts.`);
-    } else {
-      dispatch(addContact(newName, number));
+      return alert(`${name} is already in contacts.`);
     }
 
     event.target.reset();
@@ -55,5 +54,3 @@ export const ContactsForm = () => {
     </>
   );
 };
-
-
