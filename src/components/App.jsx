@@ -24,7 +24,7 @@ export const App = () => {
       <ContactsForm />
       {isLoading && !error && <Loader />}
       <ContactsList title="Contacts" />
-      {/* <ContactItem /> */}
+
       <GlobalStyle />
     </Container>
   );

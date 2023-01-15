@@ -12,7 +12,6 @@ export const ContactsForm = () => {
     event.preventDefault();
     const name = event.target.name.value;
     const number = event.target.number.value;
-    dispatch(addContact({ name, number }));
 
     if (
       contacts.some(
@@ -20,6 +19,8 @@ export const ContactsForm = () => {
       )
     ) {
       return alert(`${name} is already in contacts.`);
+    } else {
+      dispatch(addContact({ name, number }));
     }
 
     event.target.reset();
